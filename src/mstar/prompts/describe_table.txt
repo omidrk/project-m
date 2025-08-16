@@ -1,0 +1,3 @@
+Describe the table below. Include all rows and columns titles but avoid including any numeric values.
+[TABLE] 
+{table}

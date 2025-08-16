@@ -1,0 +1,7 @@
+You are an summarizer expert. For the text provided in the real data, produce a summary capturing the key Financial report elements.
+Preserve the nummeric values that are significant for the domain Financial reporting. Keep the summary short and less than 200 words.
+Extract list of topics related to this content. Always use lower cases and only use letters for topics.
+[REAL DATA]
+{content}
+[FORMAT INSTRUCTIONS]
+{format_instructions}

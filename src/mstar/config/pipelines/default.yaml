@@ -1,0 +1,98 @@
+project:
+  LLM:
+    deep_model_name: deepcoder:14b
+    model_tools: "granite3.3:8b" # or other valid Ollama models
+    embedder_name: nomic-embed-text
+    reason_model: phi4-reasoning:14b-plus-q4_K_M
+    embedder_dim: 768
+    grok_api: abc
+    openai_api_key: abc
+  name: TI
+  project_path: /home/voidai/Desktop/repos/project-m
+  data_path: ${project.project_path}/eval/temp_ti_data
+  base_cache_path: ${project.project_path}/eval/temp_ti_cache
+  base_prompt_path: ${project.project_path}/src/mstar/prompts
+  domain: Financial Reporting
+  pipelines:
+    extract_pdf:
+      pdf_dir: ${project.data_path}/user_data_input_files # Replace with actual path
+      stage_dir: ${project.base_cache_path}/extract_pdf # Replace with actual path
+      cache_file_name: extract_pdf_output
+    split_chunk_files:
+      chunk_size: 500
+      cache_chunks_dir: ${project.base_cache_path}/cache_chunks # Replace with actual path
+      chunk_pipeline_output_name: chunk_pipeline_output
+
+    process_chunked_tables_pipeline:
+      cache_process_chunked_tables_dir: ${project.base_cache_path}/cache_process_chunked_tables # Replace with actual path
+      process_chunked_tables_output_name: processed_tables_output
+
+    chunked_summerizer_pipeline:
+      cache_chunked_summerizer_dir: ${project.base_cache_path}/chunked_summerizer
+      chunked_summerizer_output_name: chunked_summerizer_output
+      prompt_template_path: ${project.base_prompt_path}/summarization.txt
+      prompt_inputs:
+        - format_instructions
+        - content
+    NER:
+      cache_ner_dir: ${project.base_cache_path}/cache_ner # Path to cache directory for NER pipeline
+      ner_output_name: cache_ner_output # Name of the NER output file
+      faiss_summary_retriever_k: 5 # Number of summary retrievers
+      faiss_md_retriever_k: 5 # Number of md retrievers
+      prompt_template_path: ${project.base_prompt_path}/ner.txt # Path to your prompt template file
+      prompt_inputs:
+        - format_instructions
+        - support_docs
+        - real_data
+
+    resolve_unknown_entity:
+      cache_rue_dir: ${project.base_cache_path}/rue_cache
+      rue_output_name: rue_output
+      prompt_template_path: ${project.base_prompt_path}/resolve_unknown_entity.txt
+      prompt_inputs:
+        - name
+        - relation_description
+        - real_data
+        - format_instructions
+    entity_graph:
+      cache_entity_graph_npz_dir: ${project.base_cache_path}/entity_graph_cache
+      cache_entity_graph_faissindex_dir: ${project.base_cache_path}/faiss_index_cache"
+      ent_graph_cache_attr:
+        - entities
+        - relations
+        - id2pos
+        - pos2id
+        - next_pos
+        - ent_type_label2id
+        - rel_type_label2id
+        - emb_store
+        - params
+        - dim
+        - id2metadata
+    query_answer:
+      prompt_template_path: ${project.base_prompt_path}/query_ner.txt
+      eval_q_path: ${project.project_path}/eval
+      eval_file_name: openai_ans_result_tuned_last.csv
+      eval_result_file_name: naive_rag_answers.csv
+      eval_ner_result_file_name: ner_result_answers.csv
+      ti_question_path: ${project.data_path}/TI_edited_questions.txt
+      cache_answer_dir: ${project.base_cache_path}/entity_graph_cache
+      cache_answer_name: query_cache_result_150q
+  main_runner:
+    run_main_indexer: true
+    run_inference: false
+    lightrag_index: false
+    lightrag_inference: false
+    light_rag_workingdir: ${project.base_cache_path}/lightrag_wd
+    lightrag_inference_mode: mix # [naive , mix , hybrid]
+    dynamic_question_generation: false
+    dynamic_question_template_path: ${project.base_prompt_path}/question_generation.txt
+    answer_comparison: false
+    answer_1_mode: mix ## only [mix, hybrid, naive]
+    answer_2_mode: mstar_final # [mstar_final,mstar_explanation] ## choose between think or explanation
+    single_query_mstar:
+      enable: false
+      query: "TI net profit for q4 and q3 of year 2024"
+
+# Global settings
+version_base: None

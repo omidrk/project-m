@@ -1,0 +1,79 @@
+[project]
+name = "mstar"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Omid Jadidi",email = "omidnwp@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0,<3.13"
+dependencies = [
+    "langchain (>=0.3.20,<0.4.0)",
+    "faiss-cpu (>=1.10.0,<2.0.0)",
+    "langchain-ollama (>=0.2.3,<0.3.0)",
+    "langchain-community (>=0.3.19,<0.4.0)",
+    "tiktoken (>=0.9.0,<0.10.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "numpy (>=2.2.3,<3.0.0)",
+    "langgraph (>=0.3.5,<0.4.0)",
+    "duckduckgo-search (>=7.5.1,<8.0.0)",
+    "langchain-text-splitters (>=0.3.6,<0.4.0)",
+    "rank-bm25 (>=0.2.2,<0.3.0)",
+    "trustcall (>=0.0.38,<0.0.39)",
+    "rdflib[html,lxml,networkx,orjson] (>=7.1.3,<8.0.0)",
+    "matplotlib (>=3.10.1,<4.0.0)",
+    "scipy (>=1.15.2,<2.0.0)",
+    "pillow (>=11.1.0,<12.0.0)",
+    "linkml (>=1.8.7,<2.0.0)",
+    "scikit-learn (>=1.6.1,<2.0.0)",
+    "pydantic (>=2.10.6,<3.0.0)",
+    "torch (==2.5.1)",
+    "torchvision (==0.20.1)",
+    "torchaudio (==2.5.1)",
+    "torch-geometric (>=2.6.1,<3.0.0)",
+    "deepsnap (>=0.2.1,<0.3.0)",
+    "pyg-lib @ https://data.pyg.org/whl/torch-2.5.0%2Bcu124/pyg_lib-0.4.0%2Bpt25cu124-cp310-cp310-linux_x86_64.whl",
+    "torch-cluster @ https://data.pyg.org/whl/torch-2.5.0%2Bcu124/torch_cluster-1.6.3%2Bpt25cu124-cp310-cp310-linux_x86_64.whl",
+    "torch-scatter @ https://data.pyg.org/whl/torch-2.5.0%2Bcu124/torch_scatter-2.1.2%2Bpt25cu124-cp310-cp310-linux_x86_64.whl",
+    "torch-sparse @ https://data.pyg.org/whl/torch-2.5.0%2Bcu124/torch_sparse-0.6.18%2Bpt25cu124-cp310-cp310-linux_x86_64.whl",
+    "torch-spline-conv @ https://data.pyg.org/whl/torch-2.5.0%2Bcu124/torch_spline_conv-1.2.2%2Bpt25cu124-cp310-cp310-linux_x86_64.whl",
+    "tensorboardx (>=2.6.2.2,<3.0.0.0)",
+    "tensorboard (>=2.19.0,<3.0.0)",
+    "spacy (>=3.8.5,<4.0.0)",
+    "transformers (>=4.51.3,<5.0.0)",
+    "sentencepiece (>=0.2.0,<0.3.0)",
+    "pcst-fast (>=1.0.10,<2.0.0)",
+    "peft (>=0.15.2,<0.16.0)",
+    "nltk (>=3.9.1,<4.0.0)",
+    "hydra-core (>=1.3.2,<2.0.0)",
+    "libcugraph-cu12 (>=25.6.0,<26.0.0)",
+    "nx-cugraph-cu12 (>=25.6.0,<26.0.0)",
+    "redis (>=6.2.0,<7.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "mstar", from = "src"}]
+
+
+[tool.poetry.scripts]
+main = "mstar.main:main"
+
+[tool.poetry.group.dev.dependencies]
+jupyterlab = "^4.3.5"
+pyvis = "^0.3.2"
+pymupdf = "^1.25.4"
+pdfplumber = "^0.11.5"
+
+
+[[tool.poetry.source]]
+name = "nvidia"
+url = "https://pypi.nvidia.com"
+priority = "supplemental"
+
+
+[tool.poetry.dependencies]
+libcugraph-cu12 = {source = "nvidia"}
+nx-cugraph-cu12 = {source = "nvidia"}
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

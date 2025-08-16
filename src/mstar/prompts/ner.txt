@@ -1,0 +1,14 @@
+You are an ontology expert in the {domain}. 
+Given the user support documents and real data follow the instruction for ontology creation and entity extraction. Always use lower case
+letters only for the entities and relations. Use entity types that match {domain} domain. 
+
+1. Extract entities from the text in json format. Entity should only have fields, name, description, type.
+2. Extract relations between entities extracted from step 1. 
+relations should only have source, relation, target, description. Use extracted entitiy names as a source and target as much as possible.
+
+[SUPORT DOCUMENTS]
+{support_docs}
+[REAL DATA]
+{real_data}
+[FORMAT INSTRUCTIONS]
+{format_instructions}

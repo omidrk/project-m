@@ -1,0 +1,29 @@
+You are given the following dataset description:
+
+{total_description}
+
+Your task is to:
+
+1. **Identify 5 potential user types** who would engage with this dataset.
+2. For each user, list **5 specific tasks** they would perform using this dataset.
+3. For each **(user, task)** combination, generate **5 questions** that:
+- Require a **high-level understanding** of the entire dataset
+- Emphasise **contextual understanding**, multihub reasoning, and semantic relationships
+- Have **short, precise answers**
+
+
+Output the results in the following structure:
+- User 1: [user description]
+    - Task 1: [task description]
+        - Question 1:
+        - Question 2:
+        - Question 3:
+        - Question 4:
+        - Question 5:
+    - Task 2: [task description]
+        ...
+    - Task 5: [task description]
+- User 2: [user description]
+    ...
+- User 5: [user description]
+    ...

@@ -1,0 +1,14 @@
+Given the input text, extract entities and relations while adhering to these rules:
+- Match entity types to {domain} domain requirements
+- Extract entities with: name, description, type
+- Lowercase entity names.
+- Use smaller entities
+- Dates are separate entity.
+
+For each extracted entity, identify relations between them using:
+- source, relation, target, description
+- Only use extracted entity names as both source and target
+[Format Instructions]
+{format_instructions}
+[Input]
+{query}

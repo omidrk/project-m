@@ -1,0 +1,9 @@
+Find the type and description of the following entity appeared in the relation. use exact entity words as a 
+response.
+entity_name: {name}
+entity relation description:
+{relation_description}
+Document to find the type and description from:
+{real_data}
+Format to return the response:
+{format_instructions}
