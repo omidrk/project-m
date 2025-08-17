@@ -8,7 +8,7 @@ project:
     grok_api: abc
     openai_api_key: abc
   name: TI
-  project_path: /home/voidai/Desktop/repos/project-m
+  project_path: ~/Desktop/repos/project-m #you project directory
   data_path: ${project.project_path}/eval/temp_ti_data
   base_cache_path: ${project.project_path}/eval/temp_ti_cache
   base_prompt_path: ${project.project_path}/src/mstar/prompts

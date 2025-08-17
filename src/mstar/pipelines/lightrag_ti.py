@@ -71,11 +71,11 @@ def insert_text(rag: Any, unique_contexts: list):
         print("Insertion failed after exceeding the maximum number of retries")
 
 
-async def initialize_rag():
+async def initialize_rag(wd: str):
 
     # Initialize LightRAG with Ollama model
     rag = LightRAG(
-        working_dir=WORKING_DIR,
+        working_dir=wd,
         llm_model_func=ollama_model_complete,  # Use Ollama model for text generation
         llm_model_name="granite3.3",  # Your model name
         llm_model_kwargs={"options": {"num_ctx": 32768}},
@@ -122,7 +122,7 @@ def lightrag_index(cfg: DictConfig):
     if not os.path.exists(WORKING_DIR):
         os.mkdir(WORKING_DIR)
 
-    rag = asyncio.run(initialize_rag())
+    rag = asyncio.run(initialize_rag(WORKING_DIR))
     insert_text(rag, unique_contexts)
 
 
