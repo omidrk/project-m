@@ -223,3 +223,12 @@ poetry run python main
 - First you need to be sure ollama is running on your machine with models, granite3.3 and nomic-text-embedding. Without these two code will not work.
 - In order to reproduce the result you need the main data directory, `eval` which is removed from the repo. To access the data contact the author of the paper on the [Linkedin](https://linkedin.com/in/omidnw).
 - Happy hacking! 🚀
+
+## Reference
+
+If you use this code in your research, please cite the following paper:
+
+> **[M*: Iterative Concept-Type Path Retrieval and Query Decomposition for Complex Knowledge Inference]**  
+> Omid Jadidi  
+> [Link to Paper]([https://doi.org/xxxx](https://www.researchgate.net/publication/394520828_M_Iterative_Concept-Type_Path_Retrieval_and_Query_Decomposition_for_Complex_Knowledge_Inference)
+
