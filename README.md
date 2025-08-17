@@ -1,6 +1,6 @@
 # Introduction
 
-**Retrieval-Augmented Generation (RAG)** [^1] is one of the most widely used methods in today’s AI landscape. It enhances large language models (LLMs) by combining the retrieval of relevant external documents with text generation. By accessing a large corpus of text data, RAG fetches the most similar documents based on vector similarity and feeds them to the model as context. This enables AI applications to adapt to new, unseen domains without requiring fine-tuning.
+**Retrieval-Augmented Generation (RAG)** is one of the most widely used methods in today’s AI landscape. It enhances large language models (LLMs) by combining the retrieval of relevant external documents with text generation. By accessing a large corpus of text data, RAG fetches the most similar documents based on vector similarity and feeds them to the model as context. This enables AI applications to adapt to new, unseen domains without requiring fine-tuning.
 
 While RAG allows for real-time data retrieval and rapid domain adaptation, it still lacks deep semantic understanding between text chunks and struggles with contextual coherence across multiple documents.
 
@@ -68,7 +68,7 @@ MStar uses [Hydra](https://hydra.cc/) for flexible, command‑line driven config
 All pipeline settings live in `project-m/src/mstar/config/pipelines/default.yaml`.  
 Below you’ll find:
 
-1. **How to launch the app** – `poetry run python -m mstar.main`.
+1. **How to launch the app** – `poetry run main`.
 2. **Quick‑start command snippets** – toggle any part of the workflow with Hydra’s _inline overrides_.
 3. **A full table of every configuration key** – so you know exactly what each setting does.
 
@@ -106,14 +106,14 @@ Below are the most common toggles:
 
 ### Example Commands
 
-| Purpose                                      | Command                                                                                                                               |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
-| **Run only the main indexing steps**         | poetry main mstar.main main_runner.run_main_indexer=true                                                                              |
-| **Skip indexing, only inference**            | poetry main mstar.main main_runner.run_main_indexer=false main_runner.run_inference=true                                              |
-| **Build Lightrag index, then run inference** | poetry main mstar.main main_runner.lightrag_index=true main_runner.lightrag_inference=true                                            |
-| **Generate a single query answer**           | poetry main mstar.main main_runner.single_query_mstar.enable=true main_runner.single_query_mstar.query="TI net profit for q4 of 2024" |
-| **Dynamic question generation**              | poetry main mstar.main main_runner.dynamic_question_generation=true                                                                   |
-| **Compare two answer modes**                 | poetry main mstar.main main_runner.answer_comparison=true                                                                             |
+| Purpose                                      | Command                                                                                                                                   |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| **Run only the main indexing steps**         | poetry run main mstar.main main_runner.run_main_indexer=true                                                                              |
+| **Skip indexing, only inference**            | poetry run main mstar.main main_runner.run_main_indexer=false main_runner.run_inference=true                                              |
+| **Build Lightrag index, then run inference** | poetry run main mstar.main main_runner.lightrag_index=true main_runner.lightrag_inference=true                                            |
+| **Generate a single query answer**           | poetry run main mstar.main main_runner.single_query_mstar.enable=true main_runner.single_query_mstar.query="TI net profit for q4 of 2024" |
+| **Dynamic question generation**              | poetry run main mstar.main main_runner.dynamic_question_generation=true                                                                   |
+| **Compare two answer modes**                 | poetry run main mstar.main main_runner.answer_comparison=true                                                                             |
 
 > **Tip:** Hydra automatically resolves `${...}` placeholders, so you don’t need to change the paths manually unless you’re moving the project.
 
