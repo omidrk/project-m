@@ -230,5 +230,5 @@ If you use this code in your research, please cite the following paper:
 
 > **[M*: Iterative Concept-Type Path Retrieval and Query Decomposition for Complex Knowledge Inference]**  
 > Omid Jadidi  
-> [Link to Paper]([https://doi.org/xxxx](https://www.researchgate.net/publication/394520828_M_Iterative_Concept-Type_Path_Retrieval_and_Query_Decomposition_for_Complex_Knowledge_Inference)
+> [Link to Paper](https://www.researchgate.net/publication/394520828_M_Iterative_Concept-Type_Path_Retrieval_and_Query_Decomposition_for_Complex_Knowledge_Inference)
 
