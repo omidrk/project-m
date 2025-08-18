@@ -199,7 +199,7 @@ Dot‑notation (`project.name`) is used for nested keys.
 curl -sSL https://install.python-poetry.org | python3 -
 
 # Clone the repo and enter it
-git clone https://github.com/yourorg/project-m.git
+git clone https://github.com/omidrk/project-m.git
 cd project-m
 
 # Install dependencies
