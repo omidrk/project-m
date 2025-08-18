@@ -206,7 +206,7 @@ cd project-m
 poetry install
 
 # Run the default pipeline
-poetry run python main
+poetry run main
 ```
 
 ### Pipelines Explanation
